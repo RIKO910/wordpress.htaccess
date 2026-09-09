@@ -1,0 +1,80 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+DirectoryIndex index.php
+RewriteRule ^index.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+
+# Protect .HTACCESS
+
+<Files ~ "^.*\.([Hh][Tt][Aa])">
+    order allow,deny
+    deny from all
+    satisfy all
+</Files>
+
+
+# WP-CONFIG BLOCK
+
+<Files wp-config.php>
+    order allow,deny
+    deny from all
+ </Files>
+
+
+# directory browsing block
+    Options All -Indexes
+    
+    
+# Disable XMLRPC.PHP
+
+<Files xmlrpc.php>
+    order deny,allow
+    deny from all
+</Files>
+
+
+# BEGIN block author scans
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{QUERY_STRING} (author=\d+) [NC]
+RewriteRule .* - [F]
+
+# END block author scans
+
+# Protect the .htaccess
+    <files .htaccess>
+    order allow,deny
+    deny from all
+    </files>
+
+
+
+
+
+# wp-content access deny
+
+Order deny,allow
+    Deny from all
+    <Files ~ ".(xml|css|jpe?g|png|gif|js)$">
+    Allow from all
+    </Files>
+    
+
+
+
+# uploads directory access deny
+
+<Files *.php>
+deny from all
+</Files>
+# Block executables
+<FilesMatch "\.(php|phtml|php3|php4|php5|pl|py|jsp|asp|html|htm|shtml|sh|cgi|suspected)$">
+    deny from all
+</FilesMatch>
+    

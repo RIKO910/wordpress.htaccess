@@ -57,7 +57,7 @@ RewriteRule .* - [F]
 
 
 
-# wp-content access deny
+# wp-content access deny, put this code in wp-content .htaccess file
 
 Order deny,allow
     Deny from all
@@ -68,7 +68,7 @@ Order deny,allow
 
 
 
-# uploads directory access deny
+# uploads directory access deny, put this code in wp-content-> uploads .htaccess file
 
 <Files *.php>
 deny from all

@@ -2,7 +2,7 @@
  * 🔒 SAFE & STABLE WORDPRESS SECURITY (SITEGROUND SAFE)
  */
 
-// Disable plugin/theme install, update, delete
+// Disable plugin/theme install, update, delete, use False
 define('DISALLOW_FILE_MODS', true);
 
 // Disable file editor
